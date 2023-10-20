@@ -1,0 +1,149 @@
+﻿@model finalcollege.Models.Registermodel
+
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h4 class="view1">@ViewBag.create</h4>
+<h4 class="view">@ViewBag.Email</h4>
+<link href="~/Content/css/Signup.css" rel="stylesheet" />
+<script src="~/Scripts/prevent/preventback.js"></script>
+<script src="~/Scripts/Home/Signup.js"></script>
+<div class="form">
+
+    @using (Html.BeginForm("Signup", "Home", FormMethod.Post, new { onsubmit = "return validateForm();" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h2>Sign up</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label for="FirstName" class="control-label col-md-2" id="lable">First name</label>
+            <div class="col-md-10">
+                <input type="text" id="FirstName" name="FirstName" placeholder="Enter Firstname" class="form-control" onfocusout="checkFirstName()" />
+                <span class="error" id="errorFirstname"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="LastName" class="control-label col-md-2" id="lable">Last name</label>
+            <div class="col-md-10">
+                <input type="text" id="Lastname" name="LastName" placeholder="Enter Lastname" class="form-control" onfocusout="checkLastname()" />
+                <span class="error" id="errorLastname"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="DateOfBirth" class="control-label col-md-2" id="lable">Dateofbirth</label>
+            <div class="col-md-10">
+                <input type="date" id="DateOfBirth" name="DateOfBirth" max="2003-06-01" class="form-control" onchange="calculateAge()" />
+                <span class="error" id="errordob"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Age" class="control-label col-md-2">Age</label>
+            <div class="col-md-10">
+                <input type="text" id="Age" name="Age" class="form-control" readonly />
+                <span class="error" id="errorage"></span>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Gender</label>
+            <div class="col-md-10">
+                <label class="radio-inline">
+                    <input type="radio" name="Gender" value="Male" id="maleRadio" onfocusout="validateGender()"> Male
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="Gender" value="Female" id="femaleRadio" onfocusout="validateGender()"> Female
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="Gender" value="Others" id="othersRadio" onfocusout="validateGender()"> Others
+                </label>
+                <span class="error" id="genderError"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="PhoneNumber" class="control-label col-md-2" id="lable">Phone number</label>
+            <div class="col-md-10">
+                <input type="text" id="PhoneNumber" name="PhoneNumber" class="form-control" placeholder="Enter Phonenumber" onfocusout="checkPhonenumber()" />
+                <span class="error" id="errorphonenumber"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Address" class="control-label col-md-2">Address</label>
+            <div class="col-md-10">
+                <input type="text" id="Address" name="Address" class="form-control" placeholder="Enter Address" onfocusout="checkaddress()" />
+                <span class="error" id="erroraddress"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="State" class="control-label col-md-2">State</label>
+            <div class="col-md-10">
+                <select id="state" name="state" class="form-control" onchange="chooseState('state', 'city')">
+                    <option value="">Select a state</option>
+                    <option value="tamilnadu">Tamil Nadu</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="karnataka">Karnataka</option>
+                </select>
+                <span id="errorState" class="error"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="City" class="control-label col-md-2">City</label>
+            <div class="col-md-10">
+                <select id="city" name="city" class="form-control">
+                    <option value="">Select a city</option>
+                </select>
+                <span id="errorCity" class="error"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="Email" class="control-label col-md-2">Email</label>
+            <div class="col-md-10">
+                <input type="text" id="Email" name="Email" class="form-control" placeholder="Enter Email" onfocusout="checkEmail()" />
+                <span class="error" id="erroremail"> </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Password" class="control-label col-md-2">Password</label>
+            <div class="col-md-10">
+                <input type="password" id="Password" name="Password" class="form-control" placeholder="Enter Password" onfocusout=" checkPassword()" />
+                <span class="error" id="errorpass"> </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ConfirmPassword" class="control-label col-md-2" id="lable">Confirm password</label>
+            <div class="col-md-10">
+                <input type="password" id="ConfirmPassword" name="ConfirmPassword" class="form-control" placeholder="Enter Confirmpassword" onfocusout="checkpasswordc()" />
+                <span class="error" id="errorconpass"> </span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sign up" id="create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+}

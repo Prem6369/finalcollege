@@ -1,0 +1,129 @@
+﻿h3{
+    font-family:'Times New Roman', Times, serif;
+    font-weight:800;
+}
+
+.cont {
+    overflow: hidden;
+}
+
+    .cont img {
+       
+        top: 30%;
+        left: 25%;
+        width: 30%;
+        height: auto;
+        transition: transform 0.3s;
+    }
+
+        .cont img:hover {
+            transform: scale(1.1);
+        }
+
+    .cont #ug {
+        position: absolute;
+        top: 79%;
+        font-size: 25px;
+        color: white;
+        font-weight: bold;
+        left: 10%;
+    }
+
+.cont2 {
+    overflow: hidden;
+}
+
+    .cont2 img {
+        left: 35%;
+        width: 29%;
+        height: auto;
+        transition: transform 0.3s;
+    }
+
+        .cont2 img:hover {
+            transform: scale(1.1);
+        }
+
+    .cont2 #pg {
+        position:absolute;
+        top:129%;
+        left:10%;
+        font-size: 25px;
+        color: white;
+        font-weight: bold;
+        
+    }
+
+.cont3 {
+    overflow: hidden;
+}
+    .cont3 img {
+        width: 29%;
+        height: auto;
+        transition: transform 0.3s;
+    }
+        .cont3 img:hover {
+            transform: scale(1.1);
+        }
+    .cont3 #pro {
+        position: absolute;
+        top: 180%;
+        font-size: 25px;
+        color: white;
+        font-weight: bold;
+        left: 5%;
+    }
+.para {
+    padding:30px;
+    margin: 40px;
+    width: 50%;
+    display: inline-block;
+    background-image: url('../img/2ndbluebg.jpg');
+    font-family: 'Global Serif';
+    color:white;
+    text-align:justify;
+
+}
+.para2 {
+    padding: 30px;
+    margin: 40px;
+    width: 50%;
+    bottom:auto;
+    display: inline-block;
+    background-image: url('../img/2ndbluebg.jpg');
+    font-family: 'Global Serif';
+    color: white;
+    text-align: justify;
+}
+.para3 {
+    padding: 30px;
+    margin: 40px;
+    width: 50%;
+    bottom: auto;
+    display: inline-block;
+    background-image: url('../img/2ndbluebg.jpg');
+    font-family: 'Global Serif';
+    color: white;
+    text-align: justify;
+}
+
+.apply {
+    background-color: #3366ff;
+}
+
+.split {
+    display: flex;
+    justify-content: space-between;
+}
+.he{
+    margin:30px;
+}
+.btt{
+    margin-top:90px;
+    margin-right:150px;
+    
+}
+.paraa{
+    width:50%;
+    padding:25px;
+}

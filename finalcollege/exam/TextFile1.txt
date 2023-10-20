@@ -1,0 +1,242 @@
+﻿        public List<Coursemodel> Courseupdate(int id)
+        {
+            connection();
+            connect.Open();
+
+            List<Coursemodel> Courselist = new List<Coursemodel>();
+            SqlCommand cmd = new SqlCommand("SPS_CourseDetails", connect);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+            connect.Close();
+
+            foreach (DataRow list in dt.Rows)
+            {
+                Courselist.Add(
+
+                  new Coursemodel
+                  {
+                      ID = Convert.ToInt32(list["ID"]),
+                      Courseid = Convert.ToString(list["Courseid"]),
+                      Coursename = Convert.ToString(list["Coursename"]),
+                      Description = Convert.ToString(list["Description"]),
+                      Duration = Convert.ToString(list["Duration"]),
+                      Availablesheet = Convert.ToInt32(list["Availablesheet"])
+                  }
+                ); ;
+            }
+
+            return Courselist;
+        }
+        public bool Update(Coursemodel cus)
+        {
+            connection();
+            SqlCommand cmd = new SqlCommand("SPU_Course", connect);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Courseid", cus.Courseid);
+            cmd.Parameters.AddWithValue("@Coursename", cus.Coursename);
+            cmd.Parameters.AddWithValue("@Description", cus.Description);
+            cmd.Parameters.AddWithValue("@Duration", cus.Duration);
+            cmd.Parameters.AddWithValue("@Availablesheet", cus.Availablesheet);
+
+
+            connect.Open();
+            int i = cmd.ExecuteNonQuery();
+            connect.Close();
+
+            if (i >= 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+     // GET: Admin/Editcourse
+        public ActionResult EditCourse(int id, Coursemodel cus)
+        {
+            Adminrepo repo = new Adminrepo();
+            return View(model: repo.Courseupdate(id).Find(e => e.ID == id));
+        }
+
+        // POST: Admin/EditDoctor
+        [HttpPost]
+        public ActionResult EditCourse(Coursemodel cus)
+        {
+            Adminrepo repo = new Adminrepo();
+            repo.Update(cus);
+            ViewBag.Message = "Course updated successfully";
+            return View();
+
+        }
+
+
+
+
+
+
+        nitthis
+
+
+         public bool Login(Registermodel register,out int id)
+        {
+            connection();
+
+           if(register.Email != null && register.Password != null)
+            {
+                int k=0;
+                if(k==0)
+                {
+                    SqlCommand cmd = new SqlCommand("SP_LoginUser", connect);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@email", register.Email);
+                    cmd.Parameters.AddWithValue("@Password", register.Password);
+                    connect.Open();
+
+                    SqlDataReader adapter = cmd.ExecuteReader();
+                    if (adapter.Read())
+                    {
+                        id= (int)adapter["id"];
+
+                        return true;
+                    }
+                    else
+                    {
+                        id =0;
+                        k = id;
+                        return false;
+                    }
+
+                }
+                else if(k==0)
+                {
+                    SqlCommand cmd = new SqlCommand("SPI_Register", connect);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@Username", register.Username);
+                    cmd.Parameters.AddWithValue("@Password", register.Password);
+                    connect.Open();
+
+
+                    SqlDataReader adapter = cmd.ExecuteReader();
+                    if (adapter.Read())
+                    {
+                        id = (int)adapter["id"];
+                        k = id;
+                        return true;
+                    }
+                    else
+                    {
+                        id = 0;
+                        return false;
+                    }
+
+                }
+                connect.Close();
+                id = k;
+                return true;
+            }
+            
+           else 
+            {
+                id = 0;
+                return false; 
+            }
+            
+        }
+         [HttpPost]
+        public ActionResult Signin(Registermodel reg)
+        {
+            int id=0;
+            UserRepo obj = new UserRepo();
+            obj.Login(reg,out id);
+            return View();
+        }
+
+
+
+
+
+
+
+
+
+        ///coursedetails///
+
+
+
+@model IEnumerable<finalcollege.Models.Coursemodel>
+
+@{
+    ViewBag.Title = "Coursedeatils";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Coursedeatils</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateCourse")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Program)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Courseid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Coursename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Availablesheet)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Program)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Courseid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Coursename)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Availablesheet)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditCourse", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { Courseid = item.Courseid }, new {  onclick = "return confirm('Are you sure you want to delete this student?');" })
+        </td>
+    </tr>
+}
+
+</table>

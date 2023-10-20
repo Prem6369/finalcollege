@@ -1,0 +1,179 @@
+﻿@model finalcollege.Models.UserAdmissionmodel
+
+@{
+    ViewBag.Title = "ApplyUser";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+
+}
+<h2> @ViewBag.ErrorMessage</h2>
+<h2> @ViewBag.Message</h2>
+<link href="~/Content/css/ApplyUser.css" rel="stylesheet" />
+<script src="~/Scripts/user/applyuser.js"></script>
+<div class="form">
+
+    @using (Html.BeginForm("ApplyUser", "UserAdmission", FormMethod.Post, new { onsubmit = "return validate();" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h2>Application Form</h2>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { placeholder = "FirstName", @class = "form-control", id = "firstname", onfocusout = "checkfirstname()" } })
+                <span class="error" id="errorfirstname"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, "LastName", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { placehoder = "LastName", @class = "form-control", id = "lastname", onfocusout = "checklastname()" } })
+                <span class="error" id="errorlastname"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Gender</label>
+            <div class="col-md-10">
+                <label class="radio-inline">
+                    <input type="radio" name="Gender" value="Male" id="maleRadio" onfocusout="validateGender()"> Male
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="Gender" value="Female" id="femaleRadio" onfocusout="validateGender()"> Female
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="Gender" value="Others" id="othersRadio" onfocusout="validateGender()"> Others
+                </label>
+                <span class="error" id="genderError"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placehoder = "Enter Your Email", @class = "form-control", id = "email", onfocusout = "checkEmail()" } })
+                <span class="error" id="erroremail"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HighSchoolName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HighSchoolName, new { htmlAttributes = new { placehoder = "HighschoolName", @class = "form-control", id = "highname", onfocusout = "checkhigh()" } })
+                <span class="error" id="errorhighname"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HighSchoolGroup, "12thGroup", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.HighSchoolGroup, new SelectList(
+                    new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = "Computer Science/arts", Value = "Computer Science/arts" },
+                        new SelectListItem { Text = "Computer Science/Maths", Value = "Computer Science/Maths" },
+                        new SelectListItem { Text = "Biology", Value = "Biology" }
+                    }, "Value", "Text"),
+                    "Select a High School Group", new { @class = "form-control", id = "group1", onfocusout = "checkgroup1()" })
+                <span class="error" id="errorgroup1"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="mark1" class="control-label col-md-2">12thMark</label>
+            <div class="col-md-10">
+                <input type="text" id="mark1" class="form-control" onfocusout="checkmark1()" />
+                <span class="error" id="errormark1"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SecondarySchoolName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SecondarySchoolName, new { htmlAttributes = new { @class = "form-control", id = "sec", onfocusout = "checksec()" } })
+                <span class="error" id="errorsec"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="mark2" class="control-label col-md-2">10thMark</label>
+            <div class="col-md-10">
+                <input type="text" id="mark2" class="form-control" onfocusout="checkmark2()" />
+                <span class="error" id="errormark2"></span>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-10">
+            <label>CommunityCertificate</label><br />
+            @Html.HiddenFor(model => model.CommunityCertificate, new { id = "CommunityCertificate" })
+
+
+            <input type="file" id="file" name="file" accept=".pdf">
+        </div>
+        <div class="col-md-10">
+            <label>Photo</label><br />
+            @Html.HiddenFor(model => model.Photo, new { id = "Photo" })
+            <span class="error" id="errorphoto"></span>
+
+
+
+            <input type="file" id="file1" name="file" accept=".jpg,.jpeg,.png">
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" id="apply" value="Apply" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+
+    <div class="profilemain">
+        @Html.ActionLink("Profile", "ShowProfile", "UserAdmission", new { id = Session["Id"] }, new { @class = "profile" })
+    </div>
+</div>
+
+<script>
+    document.getElementById("file").addEventListener("change", function (event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var base64String = e.target.result.split(",")[1];
+            document.getElementById("CommunityCertificate").value = base64String;
+        };
+        reader.readAsDataURL(file);
+    });
+</script>
+<script>
+    document.getElementById("file1").addEventListener("change", function (event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var base64String = e.target.result.split(",")[1];
+            document.getElementById("Photo").value = base64String;
+        };
+        reader.readAsDataURL(file);
+    });
+</script>
+<!--Size validation-->
+<script>
+    const fileInput = document.getElementById('Photo');
+    fileInput.addEventListener('change', function () {
+        const selectedFile = fileInput.files[0]; // Get the first selected file
+
+        if (selectedFile) {
+            if (selectedFile.size <= 1024 * 1024) {
+                // File size is less than or equal to 1 MB
+            } else {
+                // File size is greater than 1 MB
+                var er = 'File size exceeds 1 MB.';
+                document.getElementById("errorphoto").textContent = er;
+            }
+        }
+    });
+</script>

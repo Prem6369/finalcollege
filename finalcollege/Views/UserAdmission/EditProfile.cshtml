@@ -1,0 +1,118 @@
+﻿@model finalcollege.Models.UserAdmissionmodel
+
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<link href="~/Content/css/EditProfile.css" rel="stylesheet" />
+<script src="~/Scripts/prevent/preventback.js"></script>
+<script src="~/Scripts/user/edituser.js"></script>
+<h4 class="viewbag">@ViewBag.Message</h4>
+<div class="form">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h2>EditProfile</h2>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" , id = "firstname", onfocusout = "checkfirstname()" } })
+                    <span class="error" id="errorfirstname"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName, "LastName", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", id = "lastname", onfocusout = "checklastname()" } })
+                    <span class="error" id="errorlastname"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Gender</label>
+                <div class="col-md-10">
+                    <label class="radio-inline">
+                        <input type="radio" name="Gender" value="Male"> Male
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="Gender" value="Female"> Female
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="Gender" value="Others"> Others
+                    </label>
+                    <span class="error"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", id = "email", onfocusout = "checkEmail()" } })
+                    <span class="error" id="erroremail"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HighSchoolName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HighSchoolName, new { htmlAttributes = new { @class = "form-control" , id = "highname", onfocusout = "checkhigh()" } })
+                    <span class="error" id="errorhighname"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HighSchoolGroup, "12thGroup", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HighSchoolGroup, new { htmlAttributes = new { @class = "form-control" , id = "group1", onfocusout = "checkgroup1()" } })
+                    <span class="error" id="errorgroup1"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HighSchoolMark, "12thMark", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HighSchoolMark, new { htmlAttributes = new { @class = "form-control" , id = "mark1", onfocusout = "checkmark1()" } })
+                    <span class="error" id="errormark1"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SecondarySchoolName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SecondarySchoolName, new { htmlAttributes = new { @class = "form-control" , id = "sec", onfocusout = "checksec()" } })
+                    <span class="error" id="errorsec"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SecondarySchoolMark, "10thMark", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SecondarySchoolMark, new { htmlAttributes = new { @class = "form-control" , id = "mark2", onfocusout = "checkmark2()" } })
+                    <span class="error" id="errormark2"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" id="save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Profile", "ShowProfile", "UserAdmission", new { id = Session["Id"] }, new { @class = "showprofile" })
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

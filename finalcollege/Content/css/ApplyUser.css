@@ -1,0 +1,47 @@
+﻿.form {
+    background-color: #e8e2cf;
+    margin:auto;
+    width:40%;
+    margin-top:40px;
+    padding:25px;
+    border:2px solid black;
+    border-radius:20px;
+}
+h2 {
+    font-family: 'Cinzel', serif;
+    font-weight: bolder;
+    margin-top: 10px;
+    text-align: center;
+}
+.form-group, .col-md-10 {
+    margin-bottom: 20px;
+}
+body {
+    background-image: url('../img/signbck.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#apply {
+    width: 50%;
+    border: 2px solid black;
+    align-items: center;
+}
+    #apply:hover {
+        background-color: #e6cc7a;
+    }
+.profile {
+    text-decoration: none;
+    border: 2px solid black;
+    border-radius: 8px;
+    color: black;
+    padding: 8px;
+
+}
+    .profile:hover {
+        background-color: #e6cc7a;
+        color:black;
+    }
+.error{
+    color:red;
+    font-size:small;
+}

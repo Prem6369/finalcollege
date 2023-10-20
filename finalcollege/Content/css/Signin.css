@@ -1,0 +1,100 @@
+﻿
+body {
+    background-image: url('../img/signbck.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+
+}
+
+
+.from {
+    margin-top: 90px;
+    margin-left: 310px;
+    margin-bottom: 40px;
+    background-color: #e8e2cf;
+    border: 2px solid black;
+    border-radius: 40px;
+    width: 40%;
+    padding-left: 50px;
+    padding-bottom: 50px;
+    padding-right: 20px;
+    align-items:center;
+}
+h2 {
+    margin-top:10px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Cinzel', serif;
+    font-weight:bolder;
+}
+.signup {
+    text-align: inherit;
+    margin-left:60px;
+}
+.siginli {
+    text-decoration: none;
+}
+.form-group{
+    margin-bottom:20px;
+    
+}
+#submit{
+    width:90%;
+    border:2px solid black;
+    align-items:center;
+
+}
+    #submit:hover {
+        background-color: #e6cc7a;
+    }
+.error{
+    color:red;
+    font-size:small;
+}
+
+.invaild{
+    color:red;
+    font-size:small;
+    text-align:center;
+
+}
+
+/* Your existing CSS code */
+
+/* Add a media query for screens with a maximum width of 768px */
+@media screen and (max-width: 768px) {
+    .from {
+        margin: 10px;
+        width: 80%; /* Adjust the form width for smaller screens */
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+
+    .signup {
+        margin-left: 10px; /* Adjust the margin for the "Not a Member?" link */
+    }
+
+    /* Add more responsive CSS rules as needed */
+}
+
+/* Add another media query for screens with a maximum width of 480px */
+@media screen and (max-width: 480px) {
+    .from {
+        margin: 5px;
+        width: 90%; /* Adjust the form width for even smaller screens */
+        padding: 5px;
+    }
+
+    h2 {
+        font-size: 20px; /* Adjust font size for even smaller screens */
+    }
+
+    .signup {
+        margin-left: 5px; /* Further adjust the margin for the "Not a Member?" link */
+    }
+
+    /* Add more responsive CSS rules as needed */
+}

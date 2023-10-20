@@ -1,0 +1,59 @@
+﻿@model IEnumerable<finalcollege.Models.Coursemodel>
+
+@{
+    ViewBag.Title = "PgProgram";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<link href="~/Content/css/table.css" rel="stylesheet" />
+<script src="~/Scripts/prevent/preventback.js"></script>
+<h2>PGProgram</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Program)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Courseid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Coursename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Program)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Courseid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coursename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.ActionLink("Apply", "ApplyUser", new { Id = Session["Id"], Program = item.Program, Courseid = item.Courseid, Coursename = item.Coursename }, new { @class = "edit" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<span>
+    @Html.ActionLink("Back To Course", "Course", "UserAdmission", new { @class = "back" })
+</span>

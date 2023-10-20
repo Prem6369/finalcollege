@@ -1,0 +1,76 @@
+﻿@model IEnumerable<finalcollege.Models.UserAdmissionmodel>
+
+@{
+    ViewBag.Title = "Status";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<h2>Status</h2>
+<link href="~/Content/css/table.css" rel="stylesheet" />
+<script src="~/Scripts/prevent/preventback.js"></script>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Courseid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Coursename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Courseid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coursename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+            <td>
+                @if (item.Status == 1)
+                {
+                    <span>Pending</span>
+                }
+                else if (item.Status == 2)
+                {
+                    <span>Confirm</span>
+                }
+                else if (item.Status == 3)
+                {
+                    <span>Rejected</span>
+                }
+
+            </td>
+
+        </tr>
+    }
+
+</table>

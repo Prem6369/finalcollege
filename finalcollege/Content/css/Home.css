@@ -1,0 +1,273 @@
+﻿.image-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .image-carousel img {
+        max-width: 100%;
+        height: 30%;
+        margin: 0 10px;
+    }
+.mySlides {
+    position: relative;
+    display: none;
+    height: 30%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0.8;
+}
+.head {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    color: orangered;
+    font-size: 50px;
+    font-weight: bolder;
+}
+.head2 {
+    position: absolute;
+    top: 70%;
+    right: 40%;
+    color: black;
+    font-size: 30px;
+    font-weight:600;
+}
+.blueback img {
+    width:60%;
+    height:80%;
+    position:absolute;
+    top:86%;
+    
+    right:23%;
+
+}
+.bluebackhead h2{
+    position:absolute;
+    top:89%;
+    right:50%;
+    color:white;
+}
+.bluebackhead p {
+    position: absolute;
+    top: 105%;
+    left:21%;
+    color:white;
+    
+}
+.bluebackhead i{
+    position: absolute;
+    top: 142%;
+    left: 24%;
+    font-size:40px;
+    color:white;
+    
+}
+.bluebackhead #sec {
+    position: absolute;
+    top: 142%;
+    left: 40%;
+    font-size: 40px;
+    color: white;
+}
+.bluebackhead #rd {
+    position: absolute;
+    top: 142%;
+    left: 55%;
+    font-size: 40px;
+    color: white;
+}
+.bluebackhead #fo {
+    position: absolute;
+    top: 142%;
+    left: 68%;
+    font-size: 40px;
+    color: white;
+}
+.academics h2{
+    font-family:'Times New Roman', Times, serif;
+    font-weight:bold;
+}
+.cont{
+    overflow:hidden;
+}
+    .cont img {
+        top: 192%;
+        left: 25%;
+        width: 30%;
+        height: auto;
+        transition: transform 0.3s;
+    }
+    .cont img:hover {
+        transform: scale(1.1);
+    }
+.cont #ug {
+    position: absolute;
+    top: 225%;
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+    left: 10%;
+}
+.cont2 {
+    overflow: hidden;
+}
+
+    .cont2 img {
+        position:absolute;
+        top:192%;
+        left:35%;
+        width: 29%;
+        height: auto;
+        transition: transform 0.3s;
+    }
+
+        .cont2 img:hover {
+            transform: scale(1.1);
+        }
+
+    .cont2 #pg {
+        position: absolute;
+        top: 225%;
+        font-size: 25px;
+        color: white;
+        font-weight: bold;
+        left: 40%;
+    }
+.cont3{
+    overflow:hidden;
+}
+.cont3 img{
+    position:absolute;
+    top:192%;
+    left:68%;
+    width:29%;
+    height:auto;
+    transition: transform 0.3s;
+    }
+    .cont3 img:hover {
+        transform: scale(1.1);
+    }
+    .cont3 #pro {
+        position: absolute;
+        top: 225%;
+        font-size: 25px;
+        color: white;
+        font-weight: bold;
+        left: 70%;
+    }
+.admission img{
+    width:100%;
+    height:400px;
+}
+.admission h2{
+    position:absolute;
+    top:245%;
+    left:10%;
+    color:white;
+}
+.admission p {
+    position: absolute;
+    top: 258%;
+    left: 10%;
+    color: white;
+    width:33%;
+    text-align:justify;
+}
+.admissionpro img{
+    position:absolute;
+    top:258%;
+    left:48%;
+    width:30%;
+    height:auto
+
+}
+.apply {
+    background-color: #3366ff;
+}
+
+.split {
+    display: flex;
+    justify-content: space-between;
+}
+
+.he {
+    margin: 30px;
+}
+
+.btt a {
+    background-color: #1d1160;
+    color:white;
+    text-decoration: none;
+    border: 2px solid black;
+    position:absolute;
+    top:335%;
+    right:20%;
+   border-radius:10%;
+   padding:8px;
+}
+
+.paraa {
+    width: 50%;
+    padding: 25px;
+ 
+}
+.paraa p{
+    margin-top:-40px;
+}
+
+/* Your existing CSS code */
+
+/* Add a media query for screens with a maximum width of 768px */
+@media screen and (max-width: 768px) {
+    /* Place your responsive CSS rules here */
+
+    /* Example: Adjust font size for smaller screens */
+    .head {
+        font-size: 36px;
+    }
+
+    .head2 {
+        font-size: 20px;
+    }
+
+    .blueback img {
+        width: 100%;
+        height: auto;
+        top: 70%;
+        right: 0;
+    }
+
+    .bluebackhead h2 {
+        font-size: 28px;
+    }
+
+    /* Add more responsive CSS rules as needed */
+}
+
+/* Add another media query for screens with a maximum width of 480px */
+@media screen and (max-width: 480px) {
+    /* Place your responsive CSS rules here */
+
+    /* Example: Adjust font size and layout for even smaller screens */
+    .head {
+        font-size: 28px;
+    }
+
+    .head2 {
+        font-size: 16px;
+    }
+
+    .blueback img {
+        width: 100%;
+        height: auto;
+        top: 60%;
+        right: 0;
+    }
+
+    .bluebackhead h2 {
+        font-size: 24px;
+    }
+
+    /* Add more responsive CSS rules as needed */
+}

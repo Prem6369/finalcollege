@@ -1,0 +1,58 @@
+﻿@model finalcollege.Models.Registermodel
+
+@{
+    ViewBag.Title = "Signin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <script src="~/Scripts/Home/Signin.js"></script>
+    <script src="~/Scripts/prevent/preventback.js"></script>
+    <link href="~/Content/css/Signin.css" rel="stylesheet" />
+<div class="from">
+    @using (Html.BeginForm("Signin", "Home", FormMethod.Post, new { onsubmit = "return validatesubmit();" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <h2>Sign in</h2>
+        <h4 class="invaild">@ViewBag.invalid</h4>
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="form-group">
+                <label for="Email" class="control-label col-md-2">Email</label>
+                <div class="col-md-10">
+                    <input type="text" id="email" name="Email" class="form-control" placeholder="Enter Email" onfocusout="checkEmail()" />
+                    <span class="error" id="error"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Password" class="control-label col-md-2">Password</label>
+                <div class="col-md-10">
+                    <input type="password" id="password" name="Password" class="form-control" placeholder="Enter Password" onfocusout="checkPassword()" />
+                    <span class="error" id="errorpassword"></span>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Sign in" id="submit" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    <p class="signup">
+        Not a Member?
+        @Html.ActionLink("Sign up", "Signup", "Home", new { @class = "siginli" })
+    </p>
+    <p class="signup">
+        @Html.ActionLink("ForgotPassword", "Forgetpassword", "Home", new { @class = "siginli" })
+    </p>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</div>

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/css/HomeLayout.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/cc690e01d7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+        <div class="log">
+            <i class="fa-solid fa-graduation-cap" style="color: white;"> <span class="logo"> PSG COLLEGE </span> </i>
+        </div>
+        <ul>
+            <li><a href="@Url.Action("Course", "UserAdmission")">Course</a></li>
+            <li><a href="@Url.Action("ShowProfile", "UserAdmission", new { id = Session["ID"] })">Profile</a></li>
+            <li><a href="@Url.Action("Status", "UserAdmission", new { id = Session["ID"] })">Status</a></li>
+
+            <li><a href="@Url.Action("Home","Home")">Logout</a></li>
+        </ul>
+
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+    <footer class="foot">
+        <div class="container">
+            <p>&copy; 2023  PSG college. All rights reserved.</p>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserLayout</title>
+</head>
+<body>
+    <div>
+    </div>
+</body>
+</html>

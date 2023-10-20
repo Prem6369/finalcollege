@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+<script src="https://kit.fontawesome.com/cc690e01d7.js" crossorigin="anonymous"></script>
+
+<script src="~/Scripts/prevent/preventback.js"></script>
+<link href="~/Content/css/Home.css" rel="stylesheet" /><br />
+<main>
+    <div class="image-carousel"></div>
+    <div class="w3-content w3-section">
+        <img class="mySlides" src="~/Content/img/final5thbg.jpg" />
+        <img class="mySlides" src="~/Content/img/final4thbg.jpg" />
+        <img class="mySlides" src="~/Content/img/final3rdbg.jpg" />
+    </div><br>
+          <div>
+              <h2 class=" head">
+                  Faith, Community <br />
+                  and Excellence
+              </h2>
+              <p class="head2">
+                  Education in an environment of <br />faith and virtue for Higher Master Class.
+              </p>
+              <div class="blueback">
+                  <img src="~/Content/img/bluebackground.jpg" />
+              </div>
+              <div class="bluebackhead">
+                  <h2>
+                      Explore our campus and<br /> experience life at College
+                  </h2>
+                  <p>
+                      Explore our beautiful campus that enables the right atmosphere for learning and<br />
+                      development with professors and peers to get the right infrastructure and exposure<br />
+                      with facilities for residential students.
+                  </p>
+                  <i class="fa-solid fa-graduation-cap"> </i>
+                  <i id="sec" class="fa-solid fa-house"></i>
+                  <i id="rd" class="fa-solid fa-book"></i>
+                  <i id="fo" class="fa-brands fa-padlet"></i>
+              </div>
+              <br /> <br /> <br /> <br />
+          </div>
+   
+          <section class="academics">
+              <h2>Our Programmes</h2>
+              <p>It is a long established fact that a reader will be distracted by the readable content <br />of a page when looking at its layout.</p>
+              <div class="cont">
+                  <img src="~/Content/img/finalclgbg.jpg" />
+                  <p id="ug">Ug Programmes</p>
+
+              </div>
+              <div class="cont2">
+                  <img src="~/Content/img/pgprogram.jpg" />
+                  <p id="pg">Pg Programmes</p>
+              </div>
+              <div class="cont3">
+                  <img src="~/Content/img/professional.jpg" />
+                  <p id="pro">Professional Programmes</p>
+              </div>
+              <br />
+          </section>
+
+          <section class="admission">
+              <img src="~/Content/img/2ndbluebg.jpg" />
+              <h2>Admission</h2>
+              <p>
+                  With an intention to make education accessible to every student,
+                  college is open to all students whose core agenda it to grow and make an impactful career.
+                  Selection for admissions is purely based on an overall
+                  assessment of the individual’s potential and merits.
+                  STC believes in the fair selection of talent for its courses
+              </p>
+              <div class="admissionpro">
+                  <img src="~/Content/img/admissionprocess.jpg" />
+              </div>
+
+
+          </section>
+          <br /><br />
+          <section>
+              <div class="apply">
+
+                  <div class="split">
+
+                      <div class="he">
+                          <h2>Ready to pilot your future?</h2>
+                      </div>
+
+
+                      <div class="btt">
+                          <a href="@Url.Action("Signin", "Home")">Apply Online</a>
+                      </div>
+
+                  </div>
+
+                  <div class="paraa">
+                      <p>
+                          Starting a successful career is closer than you think. With exceptional academics and generous scholraships,
+                          college allows you to get your degree close to home while launching you to new heights.
+                      </p>
+                  </div>
+              </div>
+          </section>
+          
+
+           
+
+
+
+</main>
+
+
+<script>
+        var xy = 0;
+        sliders();
+
+        function sliders() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        xy++;
+        if (xy > x.length) {xy = 1}
+        x[xy-1].style.display = "block";
+        setTimeout(sliders, 2000);
+        }
+</script>

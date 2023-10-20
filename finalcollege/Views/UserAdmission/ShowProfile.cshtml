@@ -1,0 +1,112 @@
+﻿@model IEnumerable<finalcollege.Models.UserAdmissionmodel>
+
+@{
+    ViewBag.Title = "ShowProfile";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<link href="~/Content/css/table.css" rel="stylesheet" />
+<script src="~/Scripts/prevent/preventback.js"></script>
+<h2>Profile</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HighSchoolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HighSchoolGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HighSchoolMark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondarySchoolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondarySchoolMark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommunityCertificate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>Action</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighSchoolName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighSchoolGroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighSchoolMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondarySchoolName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondarySchoolMark)
+            </td>
+            <td class="pdf-cell">
+                @if (item.CommunityCertificate != null)
+                {
+                    <a href="data:application/pdf;base64,@Convert.ToBase64String(item.CommunityCertificate)" target="_blank">View PDF</a>
+                }
+                else
+                {
+                    <span>No PDF available</span>
+                }
+            </td>
+
+
+            <td>
+                @if (item.Photo != null)
+                {
+                    <a href="data:image;base64,@Convert.ToBase64String(item.Photo)" target="_blank">
+                        <img src="data:image;base64,@Convert.ToBase64String(item.Photo)" alt="Photo" height="50px" width="50px" />
+                    </a>
+                }
+                else
+                {
+                    <span>No image </span>
+                }
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "EditProfile", new { id = item.ID }, new { @class = "edit" })
+
+            </td>
+
+        </tr>
+    }
+
+</table>

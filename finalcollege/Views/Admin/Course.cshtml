@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Course";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<link href="~/Content/css/Course.css" rel="stylesheet" />
+<script src="~/Scripts/prevent/preventback.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <br />
+    <div class="row">
+        <div class="card">
+            <div class="card-content">
+                <h2 class="card-title">UG program</h2>
+                <p class="card-description">
+                    "UG" typically stands for "Undergraduate,"
+                    and "program" could refer to a variety of academic programs or courses of study at the undergraduate level.
+                </p>
+
+                <img src="~/Content/img/finalclgbg.jpg" alt="Card Image" class="card-image">
+                @Html.ActionLink("Goto Course", "UgProgram", "Admin", new { id = Session["Id"] }, new { @class = "card-button" })
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <h2 class="card-title">PG program</h2>
+                <p class="card-description">
+                    "PG Program" typically stands for "Postgraduate Program."
+                    It refers to a higher level of academic study pursued by individuals
+                    who have already completed their undergraduate education.
+                </p>
+
+                <img src="~/Content/img/finalclgbg.jpg" alt="Card Image" class="card-image">
+                @Html.ActionLink("Goto Course", "PgProgram", "Admin", new { id = Session["Id"] }, new { @class = "card-button" })
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <h2 class="card-title">Professinoal Program</h2>
+                <p class="card-description">
+                    "Professional courses" typically refer to specialized educational programs designed to equip individuals with the skills,
+                    knowledge, and practical training required for specific careers or professions.
+                </p>
+
+                <img src="~/Content/img/finalclgbg.jpg" alt="Card Image" class="card-image">
+                @Html.ActionLink("Goto Course", "PcProgram", "Admin", new { id = Session["Id"] }, new { @class = "card-button" })
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+

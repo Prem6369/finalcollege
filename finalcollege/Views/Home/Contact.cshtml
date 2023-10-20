@@ -1,0 +1,74 @@
+﻿@model finalcollege.Models.Contact
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Home/Signup.js"></script>
+<link href="~/Content/css/contct.css" rel="stylesheet" />
+<script src="~/Scripts/prevent/preventback.js"></script>
+<div class="form">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="box1">
+
+            <div class="form-horizontal">
+                <h2>Contact</h2>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label for="FullName" class="control-label col-md-2" id="lable">Full name:</label>
+                    <div class="col-md-10">
+                        <input type="text" id="FullName" name="Fullname" class="form-control" placeholder="Enter fullname" onfocusout="checkFullName()" />
+                        <span class="error" id="errorFullname"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="Email" class="control-label col-md-2">Email:</label>
+                    <div class="col-md-10">
+                        <input type="email" id="Email" name="Email" class="form-control" placeholder="Enter email" onfocusout="checkEmail()" />
+                        <span class="error" id="erroremail"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Phonenumber" class="control-label col-md-2" id="lable">Phone number:</label>
+                    <div class="col-md-10">
+                        <input type="tel" id="PhoneNumber" name="Phonenumber" class="form-control" placeholder="Enter phonenumber" onfocusout="checkPhonenumber()" />
+                        <span class="error" id="errorphonenumber"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Message" class="control-label col-md-2">Message:</label>
+                    <div class="col-md-10">
+                        <textarea id="message" name="Message" class="form-control" placeholder="Enter your query" onfocusout="checkmessage()"></textarea>
+                        <span class="error" id="errormessage"></span>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Submit" id="create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="box2">
+        <h3 class="h3">Google Map</h3>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.191429396037!2d77.00024787331404!3d11.024259654576955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8582f1435fa59%3A0x137d95bfd8909293!2sPSG%20College%20Of%20Technology!5e0!3m2!1sen!2sin!4v1697453739916!5m2!1sen!2sin"
+                width="550" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

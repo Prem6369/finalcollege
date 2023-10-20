@@ -1,0 +1,174 @@
+﻿@model IEnumerable<finalcollege.Models.UserAdmissionmodel>
+
+@{
+    ViewBag.Title = "UserDetails";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<link href="~/Content/css/Userdeatils.css" rel="stylesheet" />
+<script src="~/Scripts/prevent/preventback.js"></script>
+<br />
+<h2>UserDetails</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Program)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Courseid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Coursename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HighSchoolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HighSchoolGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HighSchoolMark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondarySchoolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondarySchoolMark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommunityCertificate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Program)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Courseid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coursename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighSchoolName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighSchoolGroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HighSchoolMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondarySchoolName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondarySchoolMark)
+            </td>
+            <td class="pdf-cell">
+                @if (item.CommunityCertificate != null)
+                {
+                    <a href="data:application/pdf;base64,@Convert.ToBase64String(item.CommunityCertificate)" target="_blank">View PDF</a>
+                }
+                else
+                {
+                    <span>No PDF available</span>
+                }
+            </td>
+
+            <td>
+                @if (item.Photo != null)
+                {
+                    <a href="data:image;base64,@Convert.ToBase64String(item.Photo)" target="_blank">
+                        <img src="data:image;base64,@Convert.ToBase64String(item.Photo)" alt="Photo" height="50px" width="50px" />
+                    </a>
+                }
+                else
+                {
+                    <span>No image </span>
+                }
+            </td>
+
+
+            <td>
+                @{
+                    var statusList = new List<SelectListItem>
+                                    {
+                        new SelectListItem { Text = "Waiting", Value = "1", Selected = (item.Status == 1) },
+                        new SelectListItem { Text = "Confirm", Value = "2", Selected = (item.Status == 2) },
+                        new SelectListItem { Text = "Rejected", Value = "3", Selected = (item.Status == 3) }
+                    };
+                }
+
+                @Html.DropDownListFor(modelItem => item.Status, statusList, new { @class = "status-dropdown" })
+
+                <input type="hidden" class="itemid" value="@item.ID" />
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.status-dropdown').change(function () {
+            var itemId = $(this).siblings('.itemid').val();
+            var newStatus = $(this).val();
+
+            $.ajax({
+                url: '@Url.Action("status", "Admin")', // Corrected action and controller names
+                type: 'POST',
+                data: { itemId: itemId, Status: newStatus },
+                success: function (result) {
+                    if (result.success) {
+                        console.log(result.message);
+                    } else {
+                        console.error(result.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+
+        // Add an onclick method to the dropdown items
+        $('.status-dropdown option').click(function () {
+            // You can perform actions here when a dropdown item is clicked
+            var selectedValue = $(this).val();
+            console.log('Dropdown item clicked with value: ' + selectedValue);
+        });
+    });
+</script>
+
+
+

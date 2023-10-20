@@ -1,0 +1,52 @@
+﻿.con {
+    margin-top: 40px;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-weight: bolder;
+}
+
+body {
+    background-image: url('../img/signbck.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+form {
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 40%;
+    padding: 20px;
+    margin: auto;
+    background-color: #e8e2cf;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
+}
+
+    .input-group input, .input-group textarea {
+        margin-top: 5px;
+        font-size: 12px;
+        padding: 5px;
+        border: 2px solid #403f3f;
+    }
+
+    .input-group input, textarea:focus {
+        outline: 0;
+    }
+
+
+.bt{
+    margin:10px;
+    margin-left:101px;
+}
+.buttons{
+    padding:8px;
+    border:2px solid black;
+    border-radius:10px;
+}
